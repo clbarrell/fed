@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import Checkbox from "./form/Checkbox";
-import { days } from "./Activity";
 
 export type NewActivityModalProps = {
   newFeed: (timestamp: number, activityType: string, mainSide: string) => void;
@@ -25,17 +24,9 @@ export const NewActivityModal: React.FC<NewActivityModalProps> = ({ newFeed, can
     setMainSide(otherSide[mainSide]);
   };
 
-  const tenMins = 1000 * 60 * 10;
-  const timeRound = (time, roundTo) => {
-    return Math.round(time / roundTo) * roundTo;
-  };
-
-  const incTimeOfFeed = () => {
-    setTimeOfFeed(new Date(timeRound(timeOfFeed.getTime() + 10 * 60000, tenMins)));
-  };
-
-  const decTimeOfFeed = () => {
-    setTimeOfFeed(new Date(timeRound(timeOfFeed.getTime() + -10 * 60000, tenMins)));
+  const handleTimeInputChange = (e) => {
+    console.log(e.target.value);
+    setTimeOfFeed(new Date(e.target.value));
   };
 
   return (
@@ -44,21 +35,13 @@ export const NewActivityModal: React.FC<NewActivityModalProps> = ({ newFeed, can
       <div>
         <p className="my-4">Started:</p>
         <div className="flex font-medium text-lg my-4">
-          <button
-            onClick={decTimeOfFeed}
-            className="px-4 py-4 border-2 border-r-0 border-indigo-400 text-indigo-400 rounded-l-lg hover:border-indigo-600 hover:text-indigo-600 hover:bg-indigo-200"
-          >
-            -
-          </button>
-          <span className="border-2 border-indigo-400 px-4 py-4">
-            {days[timeOfFeed.getDay()]} {timeOfFeed.toLocaleTimeString().substr(0, 5)}
-          </span>
-          <button
-            onClick={incTimeOfFeed}
-            className="px-4 py-4 border-2 border-l-0 border-indigo-400 text-indigo-400 rounded-r-lg hover:border-indigo-600 hover:text-indigo-600 hover:bg-indigo-200"
-          >
-            +
-          </button>
+          <input
+            type="datetime-local"
+            value={timeOfFeed.toISOString().substr(0, 16)}
+            onChange={handleTimeInputChange}
+            className="border-2 border-indigo-400 px-4 py-4 rounded-lg font-medium hover:bg-indigo-100 cursor-pointer w-full"
+            max={new Date().toISOString().substr(0, 16)}
+          />
         </div>
       </div>
       <div className="">

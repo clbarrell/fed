@@ -15,7 +15,10 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   labelRight = "",
 }) => {
   return (
-    <label htmlFor="mainSideCheckBox" className="flex items-center cursor-pointer">
+    <label
+      htmlFor="mainSideCheckBox"
+      className="flex items-center cursor-pointer border-2 border-indigo-400 px-4 py-4 rounded-lg"
+    >
       {/* <!-- label --> */}
       <div className={`ml-3 font-medium mr-3 text-lg ${!isChecked ? "font-bold text-pink-500" : "text-pink-400"}`}>
         {labelLeft}
