@@ -5798,6 +5798,150 @@ video {
   display: none;
 }
 
+.hover\:block:hover {
+  display: block;
+}
+
+.hover\:inline-block:hover {
+  display: inline-block;
+}
+
+.hover\:inline:hover {
+  display: inline;
+}
+
+.hover\:flex:hover {
+  display: flex;
+}
+
+.hover\:inline-flex:hover {
+  display: inline-flex;
+}
+
+.hover\:table:hover {
+  display: table;
+}
+
+.hover\:table-caption:hover {
+  display: table-caption;
+}
+
+.hover\:table-cell:hover {
+  display: table-cell;
+}
+
+.hover\:table-column:hover {
+  display: table-column;
+}
+
+.hover\:table-column-group:hover {
+  display: table-column-group;
+}
+
+.hover\:table-footer-group:hover {
+  display: table-footer-group;
+}
+
+.hover\:table-header-group:hover {
+  display: table-header-group;
+}
+
+.hover\:table-row-group:hover {
+  display: table-row-group;
+}
+
+.hover\:table-row:hover {
+  display: table-row;
+}
+
+.hover\:flow-root:hover {
+  display: flow-root;
+}
+
+.hover\:grid:hover {
+  display: grid;
+}
+
+.hover\:inline-grid:hover {
+  display: inline-grid;
+}
+
+.hover\:hidden:hover {
+  display: none;
+}
+
+.group:hover .group-hover\:block {
+  display: block;
+}
+
+.group:hover .group-hover\:inline-block {
+  display: inline-block;
+}
+
+.group:hover .group-hover\:inline {
+  display: inline;
+}
+
+.group:hover .group-hover\:flex {
+  display: flex;
+}
+
+.group:hover .group-hover\:inline-flex {
+  display: inline-flex;
+}
+
+.group:hover .group-hover\:table {
+  display: table;
+}
+
+.group:hover .group-hover\:table-caption {
+  display: table-caption;
+}
+
+.group:hover .group-hover\:table-cell {
+  display: table-cell;
+}
+
+.group:hover .group-hover\:table-column {
+  display: table-column;
+}
+
+.group:hover .group-hover\:table-column-group {
+  display: table-column-group;
+}
+
+.group:hover .group-hover\:table-footer-group {
+  display: table-footer-group;
+}
+
+.group:hover .group-hover\:table-header-group {
+  display: table-header-group;
+}
+
+.group:hover .group-hover\:table-row-group {
+  display: table-row-group;
+}
+
+.group:hover .group-hover\:table-row {
+  display: table-row;
+}
+
+.group:hover .group-hover\:flow-root {
+  display: flow-root;
+}
+
+.group:hover .group-hover\:grid {
+  display: grid;
+}
+
+.group:hover .group-hover\:inline-grid {
+  display: inline-grid;
+}
+
+.group:hover .group-hover\:hidden {
+  display: none;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -14343,6 +14487,11 @@ video {
   transition-delay: 1000ms;
 }
 
+input:checked ~ .toggle__dot {
+  transform: translateX(100%);
+  /* background-color: #48bb78; */
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
@@ -19533,6 +19682,150 @@ video {
   }
 
   .sm\:hidden {
+    display: none;
+  }
+
+  .sm\:hover\:block:hover {
+    display: block;
+  }
+
+  .sm\:hover\:inline-block:hover {
+    display: inline-block;
+  }
+
+  .sm\:hover\:inline:hover {
+    display: inline;
+  }
+
+  .sm\:hover\:flex:hover {
+    display: flex;
+  }
+
+  .sm\:hover\:inline-flex:hover {
+    display: inline-flex;
+  }
+
+  .sm\:hover\:table:hover {
+    display: table;
+  }
+
+  .sm\:hover\:table-caption:hover {
+    display: table-caption;
+  }
+
+  .sm\:hover\:table-cell:hover {
+    display: table-cell;
+  }
+
+  .sm\:hover\:table-column:hover {
+    display: table-column;
+  }
+
+  .sm\:hover\:table-column-group:hover {
+    display: table-column-group;
+  }
+
+  .sm\:hover\:table-footer-group:hover {
+    display: table-footer-group;
+  }
+
+  .sm\:hover\:table-header-group:hover {
+    display: table-header-group;
+  }
+
+  .sm\:hover\:table-row-group:hover {
+    display: table-row-group;
+  }
+
+  .sm\:hover\:table-row:hover {
+    display: table-row;
+  }
+
+  .sm\:hover\:flow-root:hover {
+    display: flow-root;
+  }
+
+  .sm\:hover\:grid:hover {
+    display: grid;
+  }
+
+  .sm\:hover\:inline-grid:hover {
+    display: inline-grid;
+  }
+
+  .sm\:hover\:hidden:hover {
+    display: none;
+  }
+
+  .group:hover .sm\:group-hover\:block {
+    display: block;
+  }
+
+  .group:hover .sm\:group-hover\:inline-block {
+    display: inline-block;
+  }
+
+  .group:hover .sm\:group-hover\:inline {
+    display: inline;
+  }
+
+  .group:hover .sm\:group-hover\:flex {
+    display: flex;
+  }
+
+  .group:hover .sm\:group-hover\:inline-flex {
+    display: inline-flex;
+  }
+
+  .group:hover .sm\:group-hover\:table {
+    display: table;
+  }
+
+  .group:hover .sm\:group-hover\:table-caption {
+    display: table-caption;
+  }
+
+  .group:hover .sm\:group-hover\:table-cell {
+    display: table-cell;
+  }
+
+  .group:hover .sm\:group-hover\:table-column {
+    display: table-column;
+  }
+
+  .group:hover .sm\:group-hover\:table-column-group {
+    display: table-column-group;
+  }
+
+  .group:hover .sm\:group-hover\:table-footer-group {
+    display: table-footer-group;
+  }
+
+  .group:hover .sm\:group-hover\:table-header-group {
+    display: table-header-group;
+  }
+
+  .group:hover .sm\:group-hover\:table-row-group {
+    display: table-row-group;
+  }
+
+  .group:hover .sm\:group-hover\:table-row {
+    display: table-row;
+  }
+
+  .group:hover .sm\:group-hover\:flow-root {
+    display: flow-root;
+  }
+
+  .group:hover .sm\:group-hover\:grid {
+    display: grid;
+  }
+
+  .group:hover .sm\:group-hover\:inline-grid {
+    display: inline-grid;
+  }
+
+  .group:hover .sm\:group-hover\:hidden {
     display: none;
   }
 
@@ -33275,6 +33568,150 @@ video {
     display: none;
   }
 
+  .md\:hover\:block:hover {
+    display: block;
+  }
+
+  .md\:hover\:inline-block:hover {
+    display: inline-block;
+  }
+
+  .md\:hover\:inline:hover {
+    display: inline;
+  }
+
+  .md\:hover\:flex:hover {
+    display: flex;
+  }
+
+  .md\:hover\:inline-flex:hover {
+    display: inline-flex;
+  }
+
+  .md\:hover\:table:hover {
+    display: table;
+  }
+
+  .md\:hover\:table-caption:hover {
+    display: table-caption;
+  }
+
+  .md\:hover\:table-cell:hover {
+    display: table-cell;
+  }
+
+  .md\:hover\:table-column:hover {
+    display: table-column;
+  }
+
+  .md\:hover\:table-column-group:hover {
+    display: table-column-group;
+  }
+
+  .md\:hover\:table-footer-group:hover {
+    display: table-footer-group;
+  }
+
+  .md\:hover\:table-header-group:hover {
+    display: table-header-group;
+  }
+
+  .md\:hover\:table-row-group:hover {
+    display: table-row-group;
+  }
+
+  .md\:hover\:table-row:hover {
+    display: table-row;
+  }
+
+  .md\:hover\:flow-root:hover {
+    display: flow-root;
+  }
+
+  .md\:hover\:grid:hover {
+    display: grid;
+  }
+
+  .md\:hover\:inline-grid:hover {
+    display: inline-grid;
+  }
+
+  .md\:hover\:hidden:hover {
+    display: none;
+  }
+
+  .group:hover .md\:group-hover\:block {
+    display: block;
+  }
+
+  .group:hover .md\:group-hover\:inline-block {
+    display: inline-block;
+  }
+
+  .group:hover .md\:group-hover\:inline {
+    display: inline;
+  }
+
+  .group:hover .md\:group-hover\:flex {
+    display: flex;
+  }
+
+  .group:hover .md\:group-hover\:inline-flex {
+    display: inline-flex;
+  }
+
+  .group:hover .md\:group-hover\:table {
+    display: table;
+  }
+
+  .group:hover .md\:group-hover\:table-caption {
+    display: table-caption;
+  }
+
+  .group:hover .md\:group-hover\:table-cell {
+    display: table-cell;
+  }
+
+  .group:hover .md\:group-hover\:table-column {
+    display: table-column;
+  }
+
+  .group:hover .md\:group-hover\:table-column-group {
+    display: table-column-group;
+  }
+
+  .group:hover .md\:group-hover\:table-footer-group {
+    display: table-footer-group;
+  }
+
+  .group:hover .md\:group-hover\:table-header-group {
+    display: table-header-group;
+  }
+
+  .group:hover .md\:group-hover\:table-row-group {
+    display: table-row-group;
+  }
+
+  .group:hover .md\:group-hover\:table-row {
+    display: table-row;
+  }
+
+  .group:hover .md\:group-hover\:flow-root {
+    display: flow-root;
+  }
+
+  .group:hover .md\:group-hover\:grid {
+    display: grid;
+  }
+
+  .group:hover .md\:group-hover\:inline-grid {
+    display: inline-grid;
+  }
+
+  .group:hover .md\:group-hover\:hidden {
+    display: none;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -47014,6 +47451,150 @@ video {
     display: none;
   }
 
+  .lg\:hover\:block:hover {
+    display: block;
+  }
+
+  .lg\:hover\:inline-block:hover {
+    display: inline-block;
+  }
+
+  .lg\:hover\:inline:hover {
+    display: inline;
+  }
+
+  .lg\:hover\:flex:hover {
+    display: flex;
+  }
+
+  .lg\:hover\:inline-flex:hover {
+    display: inline-flex;
+  }
+
+  .lg\:hover\:table:hover {
+    display: table;
+  }
+
+  .lg\:hover\:table-caption:hover {
+    display: table-caption;
+  }
+
+  .lg\:hover\:table-cell:hover {
+    display: table-cell;
+  }
+
+  .lg\:hover\:table-column:hover {
+    display: table-column;
+  }
+
+  .lg\:hover\:table-column-group:hover {
+    display: table-column-group;
+  }
+
+  .lg\:hover\:table-footer-group:hover {
+    display: table-footer-group;
+  }
+
+  .lg\:hover\:table-header-group:hover {
+    display: table-header-group;
+  }
+
+  .lg\:hover\:table-row-group:hover {
+    display: table-row-group;
+  }
+
+  .lg\:hover\:table-row:hover {
+    display: table-row;
+  }
+
+  .lg\:hover\:flow-root:hover {
+    display: flow-root;
+  }
+
+  .lg\:hover\:grid:hover {
+    display: grid;
+  }
+
+  .lg\:hover\:inline-grid:hover {
+    display: inline-grid;
+  }
+
+  .lg\:hover\:hidden:hover {
+    display: none;
+  }
+
+  .group:hover .lg\:group-hover\:block {
+    display: block;
+  }
+
+  .group:hover .lg\:group-hover\:inline-block {
+    display: inline-block;
+  }
+
+  .group:hover .lg\:group-hover\:inline {
+    display: inline;
+  }
+
+  .group:hover .lg\:group-hover\:flex {
+    display: flex;
+  }
+
+  .group:hover .lg\:group-hover\:inline-flex {
+    display: inline-flex;
+  }
+
+  .group:hover .lg\:group-hover\:table {
+    display: table;
+  }
+
+  .group:hover .lg\:group-hover\:table-caption {
+    display: table-caption;
+  }
+
+  .group:hover .lg\:group-hover\:table-cell {
+    display: table-cell;
+  }
+
+  .group:hover .lg\:group-hover\:table-column {
+    display: table-column;
+  }
+
+  .group:hover .lg\:group-hover\:table-column-group {
+    display: table-column-group;
+  }
+
+  .group:hover .lg\:group-hover\:table-footer-group {
+    display: table-footer-group;
+  }
+
+  .group:hover .lg\:group-hover\:table-header-group {
+    display: table-header-group;
+  }
+
+  .group:hover .lg\:group-hover\:table-row-group {
+    display: table-row-group;
+  }
+
+  .group:hover .lg\:group-hover\:table-row {
+    display: table-row;
+  }
+
+  .group:hover .lg\:group-hover\:flow-root {
+    display: flow-root;
+  }
+
+  .group:hover .lg\:group-hover\:grid {
+    display: grid;
+  }
+
+  .group:hover .lg\:group-hover\:inline-grid {
+    display: inline-grid;
+  }
+
+  .group:hover .lg\:group-hover\:hidden {
+    display: none;
+  }
+
   .lg\:flex-row {
     flex-direction: row;
   }
@@ -60750,6 +61331,150 @@ video {
   }
 
   .xl\:hidden {
+    display: none;
+  }
+
+  .xl\:hover\:block:hover {
+    display: block;
+  }
+
+  .xl\:hover\:inline-block:hover {
+    display: inline-block;
+  }
+
+  .xl\:hover\:inline:hover {
+    display: inline;
+  }
+
+  .xl\:hover\:flex:hover {
+    display: flex;
+  }
+
+  .xl\:hover\:inline-flex:hover {
+    display: inline-flex;
+  }
+
+  .xl\:hover\:table:hover {
+    display: table;
+  }
+
+  .xl\:hover\:table-caption:hover {
+    display: table-caption;
+  }
+
+  .xl\:hover\:table-cell:hover {
+    display: table-cell;
+  }
+
+  .xl\:hover\:table-column:hover {
+    display: table-column;
+  }
+
+  .xl\:hover\:table-column-group:hover {
+    display: table-column-group;
+  }
+
+  .xl\:hover\:table-footer-group:hover {
+    display: table-footer-group;
+  }
+
+  .xl\:hover\:table-header-group:hover {
+    display: table-header-group;
+  }
+
+  .xl\:hover\:table-row-group:hover {
+    display: table-row-group;
+  }
+
+  .xl\:hover\:table-row:hover {
+    display: table-row;
+  }
+
+  .xl\:hover\:flow-root:hover {
+    display: flow-root;
+  }
+
+  .xl\:hover\:grid:hover {
+    display: grid;
+  }
+
+  .xl\:hover\:inline-grid:hover {
+    display: inline-grid;
+  }
+
+  .xl\:hover\:hidden:hover {
+    display: none;
+  }
+
+  .group:hover .xl\:group-hover\:block {
+    display: block;
+  }
+
+  .group:hover .xl\:group-hover\:inline-block {
+    display: inline-block;
+  }
+
+  .group:hover .xl\:group-hover\:inline {
+    display: inline;
+  }
+
+  .group:hover .xl\:group-hover\:flex {
+    display: flex;
+  }
+
+  .group:hover .xl\:group-hover\:inline-flex {
+    display: inline-flex;
+  }
+
+  .group:hover .xl\:group-hover\:table {
+    display: table;
+  }
+
+  .group:hover .xl\:group-hover\:table-caption {
+    display: table-caption;
+  }
+
+  .group:hover .xl\:group-hover\:table-cell {
+    display: table-cell;
+  }
+
+  .group:hover .xl\:group-hover\:table-column {
+    display: table-column;
+  }
+
+  .group:hover .xl\:group-hover\:table-column-group {
+    display: table-column-group;
+  }
+
+  .group:hover .xl\:group-hover\:table-footer-group {
+    display: table-footer-group;
+  }
+
+  .group:hover .xl\:group-hover\:table-header-group {
+    display: table-header-group;
+  }
+
+  .group:hover .xl\:group-hover\:table-row-group {
+    display: table-row-group;
+  }
+
+  .group:hover .xl\:group-hover\:table-row {
+    display: table-row;
+  }
+
+  .group:hover .xl\:group-hover\:flow-root {
+    display: flow-root;
+  }
+
+  .group:hover .xl\:group-hover\:grid {
+    display: grid;
+  }
+
+  .group:hover .xl\:group-hover\:inline-grid {
+    display: inline-grid;
+  }
+
+  .group:hover .xl\:group-hover\:hidden {
     display: none;
   }
 

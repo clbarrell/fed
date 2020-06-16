@@ -10,12 +10,14 @@
     {
       "timestamp": 1591840133794,
       "activityType": "feed",
-      "mainSide": "left"
+      "mainSide": "left",
+      "id": 1592308699771
     },
     {
       "timestamp": 1591788331794,
       "activityType": "feed",
-      "mainSide": "right"
+      "mainSide": "right",
+      "id": 1592308699713
     }
   ]
 }
