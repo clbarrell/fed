@@ -24,10 +24,15 @@ export const NewActivityModal: React.FC<NewActivityModalProps> = ({ newFeed, can
     setMainSide(otherSide[mainSide]);
   };
 
-  const handleTimeInputChange = (e) => {
+  const handleTimeInputChange = (e: any) => {
     console.log(e.target.value);
     setTimeOfFeed(new Date(e.target.value));
   };
+
+  const formatDateForInput = (date: Date) => {
+    const tzoffset = date.getTimezoneOffset() * 60000; //offset in milliseconds
+    return (new Date(date.getTime() - tzoffset)).toISOString().substr(0, 16);
+  }
 
   return (
     <div className="max-w-sm mx-auto text-indigo-800">
@@ -37,10 +42,10 @@ export const NewActivityModal: React.FC<NewActivityModalProps> = ({ newFeed, can
         <div className="flex font-medium text-lg my-4">
           <input
             type="datetime-local"
-            value={timeOfFeed.toISOString().substr(0, 16)}
+            value={formatDateForInput(timeOfFeed)}
             onChange={handleTimeInputChange}
             className="border-2 border-indigo-400 px-4 py-4 rounded-lg font-medium hover:bg-indigo-100 cursor-pointer w-full"
-            max={new Date().toISOString().substr(0, 16)}
+            max={formatDateForInput(new Date())}
           />
         </div>
       </div>
