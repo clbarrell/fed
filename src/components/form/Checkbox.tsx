@@ -37,7 +37,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         {/* <!-- line --> */}
         <div className="toggle__line w-16 h-8 bg-indigo-200 rounded-full shadow-inner"></div>
         {/* <!-- dot --> */}
-        <div className="toggle__dot absolute w-8 h-8 bg-pink-500 rounded-full shadow inset-y-0 left-0 transition-all ease-in-out duration-300"></div>
+        <div className="toggle__dot absolute w-8 h-8 bg-pink-500 rounded-full shadow inset-y-0 left-0 transition-all ease-in-out duration-500"></div>
       </div>
       {/* <!-- label --> */}
       <div className={`ml-3 font-medium mr-3 text-lg ${isChecked ? "font-bold text-pink-500" : "text-indigo-500"}`}>
