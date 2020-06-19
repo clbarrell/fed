@@ -1,23 +1,5 @@
 {
   "babyName": "Edward",
-  "userId": 1,
-  "lastFeed": {
-    "timestamp": 1591880333794,
-    "activityType": "feed",
-    "mainSide": "left"
-  },
-  "activities": [
-    {
-      "timestamp": 1591840133794,
-      "activityType": "feed",
-      "mainSide": "left",
-      "id": 1592308699771
-    },
-    {
-      "timestamp": 1591788331794,
-      "activityType": "feed",
-      "mainSide": "right",
-      "id": 1592308699713
-    }
-  ]
+  "lastFeed": null,
+  "activities": []
 }

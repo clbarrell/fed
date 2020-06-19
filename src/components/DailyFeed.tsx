@@ -1,31 +1,62 @@
 import React from "react";
-import Activity from "./Activity";
+import Activity, { ActivityType } from "./Activity";
+import { ReactComponent as Blob } from "../assets/blob.svg";
+import styled from "styled-components";
+
+const SvgWrapper = styled.div`
+  height: 400px;
+`;
 
 export type DailyFeedProps = {
-  feeds: { timestamp: number; activityType: string; mainSide?: string; sinceLastFeed?: number, id: number }[];
+  feeds: ActivityType[];
   deleteActivity: (id: number) => void;
 };
+
 export const DailyFeed: React.FC<DailyFeedProps> = ({ feeds, deleteActivity }: DailyFeedProps) => {
+  const activityList: any[] = [];
+
   if (feeds.length > 1) {
     for (let i = 1; i < feeds.length; i++) {
       const msSince = feeds[i - 1].timestamp - feeds[i].timestamp;
-      feeds[i - 1].sinceLastFeed = msSince;
+      activityList.push(
+        <Activity
+          timestamp={feeds[i - 1].timestamp}
+          mainSide={feeds[i - 1].mainSide}
+          activityType={feeds[i - 1].activityType}
+          key={feeds[i - 1].id}
+          id={feeds[i - 1].id}
+          sinceLastFeed={msSince}
+          deleteActivity={deleteActivity}
+        />
+      );
     }
   }
 
-  const activities = feeds.map((f) => (
-    <Activity
-      timestamp={f.timestamp}
-      mainSide={f.mainSide}
-      activityType={f.activityType}
-      key={f.timestamp}
-      id={f.id}
-      sinceLastFeed={f.sinceLastFeed}
-      deleteActivity={deleteActivity}
-    />
-  ));
+  if (feeds.length > 0) {
+    activityList.push(
+      <Activity
+        timestamp={feeds[feeds.length - 1].timestamp}
+        mainSide={feeds[feeds.length - 1].mainSide}
+        activityType={feeds[feeds.length - 1].activityType}
+        key={feeds[feeds.length - 1].timestamp}
+        id={feeds[feeds.length - 1].id}
+        sinceLastFeed={undefined}
+        deleteActivity={deleteActivity}
+      />
+    );
+  }
 
-  return <div className="mt-8 max-w-lg mx-auto">{activities}</div>;
+  const emptyStateBlob = (
+    <SvgWrapper className="mt-8 max-w-lg mx-auto relative flex items-center">
+      <Blob />
+      <div className="text-center max-w-xs mx-auto relative font-semibold text-xl text-white">
+        <p>Record your feeds and easily see which boob is next</p>
+        <p className="my-2">You have enough on your mind already, this doesn't need to be another.</p>
+      </div>
+    </SvgWrapper>
+  );
+
+  return <>{activityList.length > 0 ? <div className="mt-8 max-w-lg mx-auto">{activityList}</div> : emptyStateBlob}</>;
 };
 
 export default DailyFeed;

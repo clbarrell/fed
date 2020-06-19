@@ -5,15 +5,18 @@ import { ReactComponent as Trash } from "../assets/trash.svg";
 
 export const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export type ActivtiyProps = {
+export type ActivityType = {
   timestamp: number;
-  mainSide?: string;
+  mainSide: string;
   activityType: string;
-  sinceLastFeed?: number;
   id: number;
+}
+
+export type ActivityProps = ActivityType & {
   deleteActivity: (id: number) => void;
+  sinceLastFeed?: number;
 };
-export const Activtiy: React.FC<ActivtiyProps> = ({
+export const Activtiy: React.FC<ActivityProps> = ({
   timestamp,
   mainSide,
   activityType,

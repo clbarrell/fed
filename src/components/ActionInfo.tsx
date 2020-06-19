@@ -3,34 +3,37 @@ import Button from "./Button";
 import { destructMS, DeconstructedTime } from "../lib/times";
 
 export type ActionInfoProps = {
-  userId: number;
   newFeed: () => void;
-  lastFeed: { timestamp: number; activityType: string; mainSide: string };
+  lastFeed: { timestamp: number; activityType: string; mainSide: string } | null;
 };
 
-export const ActionInfo: React.FC<ActionInfoProps> = ({ userId, newFeed, lastFeed }: ActionInfoProps) => {
-  console.log({ userId, newFeed, lastFeed });
-
+export const ActionInfo: React.FC<ActionInfoProps> = ({ newFeed, lastFeed }: ActionInfoProps) => {
   const timeSince = (timestamp: number) => {
     return destructMS(Date.now() - timestamp);
   };
 
-  const [sinceLastFeed, setSinceLastFeed] = useState(timeSince(lastFeed.timestamp));
+  const [sinceLastFeed, setSinceLastFeed] = useState(lastFeed ? timeSince(lastFeed.timestamp) : null);
 
   useEffect(() => {
-    const ms = timeSince(lastFeed.timestamp);
-    setSinceLastFeed(ms);
-    if (ms.h === 0) {
-      const interval = setInterval(() => {
-        console.log("Resetting sinceLastFeedString");
-        setSinceLastFeed(timeSince(lastFeed.timestamp));
-      }, 60000);
-      return () => clearInterval(interval);
+    if (lastFeed !== null) {
+      const ms = timeSince(lastFeed.timestamp);
+      setSinceLastFeed(ms);
+      if (ms.h === 0) {
+        const interval = setInterval(() => {
+          console.log("Resetting sinceLastFeedString");
+          setSinceLastFeed(timeSince(lastFeed.timestamp));
+        }, 60000);
+        return () => clearInterval(interval);
+      }
+    } else {
+      setSinceLastFeed(null);
     }
   }, [lastFeed]);
 
-  const lastFedString = (slf: DeconstructedTime) => {
-    if (slf.d === 0 && slf.h === 0) {
+  const lastFedString = (slf: DeconstructedTime | null) => {
+    if (slf === null) {
+      return <span className="text-5xl font-bold">Not sure..</span>;
+    } else if (slf.d === 0 && slf.h === 0) {
       return (
         <>
           <span className="text-5xl font-bold">{slf.m}</span>
@@ -57,9 +60,11 @@ export const ActionInfo: React.FC<ActionInfoProps> = ({ userId, newFeed, lastFee
         <p className="text-gray-600 uppercase text-sm tracking-wider">Last Fed</p>
         <div className="text-indigo-700 tracking-tighter font-medium">
           {lastFedString(sinceLastFeed)}
-          <p className="text-xl leading-snug tracking-tight">
-            on <span className="text-pink-500">{lastFeed.mainSide}</span>
-          </p>
+          {lastFeed && (
+            <p className="text-xl leading-snug tracking-tight">
+              on <span className="text-pink-500">{lastFeed.mainSide}</span>
+            </p>
+          )}
         </div>
       </div>
       <Button onClick={newFeed}>New Feed</Button>

@@ -20,7 +20,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       className="flex items-center cursor-pointer border-2 border-indigo-400 px-4 py-4 rounded-lg"
     >
       {/* <!-- label --> */}
-      <div className={`ml-3 font-medium mr-3 text-lg ${!isChecked ? "font-bold text-pink-500" : "text-pink-400"}`}>
+      <div className={`ml-3 font-medium mr-3 text-lg ${!isChecked ? "font-bold text-pink-500" : "text-indigo-400"}`}>
         {labelLeft}
       </div>
       {/* <!-- toggle --> */}
@@ -40,7 +40,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         <div className="toggle__dot absolute w-8 h-8 bg-pink-500 rounded-full shadow inset-y-0 left-0 transition-all ease-in-out duration-300"></div>
       </div>
       {/* <!-- label --> */}
-      <div className={`ml-3 font-medium mr-3 text-lg ${isChecked ? "font-bold text-pink-500" : "text-pink-500"}`}>
+      <div className={`ml-3 font-medium mr-3 text-lg ${isChecked ? "font-bold text-pink-500" : "text-indigo-500"}`}>
         {labelRight}
       </div>
     </label>

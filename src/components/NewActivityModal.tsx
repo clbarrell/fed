@@ -12,7 +12,7 @@ export const NewActivityModal: React.FC<NewActivityModalProps> = ({ newFeed, can
   const [timeOfFeed, setTimeOfFeed] = useState(new Date());
 
   const handleNewFeed = () => {
-    console.log("new feed saved...");
+    console.log("new feed saving...", timeOfFeed.toLocaleString());
     newFeed(timeOfFeed.getTime(), "Feed", mainSide);
   };
 
@@ -25,14 +25,13 @@ export const NewActivityModal: React.FC<NewActivityModalProps> = ({ newFeed, can
   };
 
   const handleTimeInputChange = (e: any) => {
-    console.log(e.target.value);
     setTimeOfFeed(new Date(e.target.value));
   };
 
   const formatDateForInput = (date: Date) => {
     const tzoffset = date.getTimezoneOffset() * 60000; //offset in milliseconds
-    return (new Date(date.getTime() - tzoffset)).toISOString().substr(0, 16);
-  }
+    return new Date(date.getTime() - tzoffset).toISOString().substr(0, 16);
+  };
 
   return (
     <div className="max-w-sm mx-auto text-indigo-800">
