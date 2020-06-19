@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9704f0d1-576d-4de2-9baa-5e203c080828/deploy-status)](https://app.netlify.com/sites/baby-fed/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
