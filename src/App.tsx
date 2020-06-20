@@ -8,7 +8,7 @@ import NewActivityModal from "./components/NewActivityModal";
 import { ActivityType, days } from "./components/Activity";
 import useLocalStorage from "./lib/useLocalStorage";
 import SnackbarToast from "./components/SnackbarToast";
-// import MuiAlert from "@material-ui/lab/Alert";
+import * as serviceWorker from "./serviceWorker";
 
 export const App: React.FC = () => {
   const babyName = data.babyName;
@@ -20,6 +20,23 @@ export const App: React.FC = () => {
     message: string;
     messageType: "success" | "info" | "";
   }>({ open: false, message: "", messageType: "" });
+
+  const onSWSuccess = () => {
+    setSnackbarStatus({
+      open: true,
+      message: "This app is now available offline and can be installed.",
+      messageType: "info",
+    });
+  };
+
+  const onSWUpdate = () => {
+    setSnackbarStatus({ open: true, message: "Refresh the page to get updated version of app.", messageType: "info" });
+  };
+
+  // If you want your app to work offline and load faster, you can change
+  // unregister() to register() below. Note this comes with some pitfalls.
+  // Learn more about service workers: https://bit.ly/CRA-PWA
+  serviceWorker.register({ onSuccess: onSWSuccess, onUpdate: onSWUpdate });
 
   const saveNewFeed = (timestamp: number, activityType: string, mainSide: string) => {
     const nf = {
