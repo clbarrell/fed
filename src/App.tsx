@@ -5,14 +5,21 @@ import "./assets/main.css";
 import DailyFeed from "./components/DailyFeed";
 import data from "./testData.json";
 import NewActivityModal from "./components/NewActivityModal";
-import { ActivityType } from "./components/Activity";
+import { ActivityType, days } from "./components/Activity";
 import useLocalStorage from "./lib/useLocalStorage";
+import SnackbarToast from "./components/SnackbarToast";
+// import MuiAlert from "@material-ui/lab/Alert";
 
 export const App: React.FC = () => {
   const babyName = data.babyName;
   const [activities, setactivities] = useLocalStorage("activities", []); // ActivityType[]
   const [lastFeed, setLastFeed] = useLocalStorage("lastFeed", null); // useState<ActivityType | null>(data.lastFeed);
   const [newActivity, setNewActivity] = useState(false);
+  const [snackbarStatus, setSnackbarStatus] = useState<{
+    open: boolean;
+    message: string;
+    messageType: "success" | "info" | "";
+  }>({ open: false, message: "", messageType: "" });
 
   const saveNewFeed = (timestamp: number, activityType: string, mainSide: string) => {
     const nf = {
@@ -50,14 +57,22 @@ export const App: React.FC = () => {
     setactivities(newList);
     resetLastFeed(nf);
     toggleNewActivity();
+    setSnackbarStatus({ open: true, message: "New feed added", messageType: "success" });
   };
 
   const deleteActivity = (id: number) => {
-    setactivities(activities.filter((a) => a.id !== id));
+    const deletedFeed = activities.filter((a: ActivityType) => a.id === id)[0].timestamp;
+    const delFeedDate = new Date(deletedFeed);
+    setactivities(activities.filter((a: ActivityType) => a.id !== id));
     console.log("deleting (ID)", id, "lastfeed:", lastFeed);
     if (lastFeed && lastFeed.id === id) {
       resetLastFeed();
     }
+    setSnackbarStatus({
+      open: true,
+      message: `Feed deleted from ${days[delFeedDate.getDay()]} @ ${delFeedDate.toLocaleTimeString()}`,
+      messageType: "success",
+    });
   };
 
   const resetLastFeed = (activity?: ActivityType) => {
@@ -88,6 +103,16 @@ export const App: React.FC = () => {
     right: "left",
   };
 
+  const handleClose = (event, reason) => {
+    if (event) {
+      event.preventDefault();
+    }
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarStatus({ ...snackbarStatus, open: false });
+  };
+
   return (
     <div className="font-sans">
       <Header babyName={babyName} />
@@ -103,6 +128,13 @@ export const App: React.FC = () => {
           defaultMainSide={lastFeed ? otherSide[lastFeed.mainSide] : "left"}
         />
       )}
+      <SnackbarToast
+        isOpen={snackbarStatus.open}
+        handleClose={handleClose}
+        closeSnackbar={() => setSnackbarStatus({ ...snackbarStatus, open: false })}
+        message={snackbarStatus.message}
+        messageType={snackbarStatus.messageType}
+      />
     </div>
   );
 };

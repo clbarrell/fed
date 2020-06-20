@@ -58,7 +58,7 @@ export const ActionInfo: React.FC<ActionInfoProps> = ({ newFeed, lastFeed }: Act
     <div className="flex flex-no-wrap justify-around items-center">
       <div>
         <p className="text-gray-600 uppercase text-sm tracking-wider">Last Fed</p>
-        <div className="text-indigo-700 tracking-tighter font-medium">
+        <div className="text-indigo-700 tracking-tighter font-medium leading-tight">
           {lastFedString(sinceLastFeed)}
           {lastFeed && (
             <p className="text-xl leading-snug tracking-tight">
