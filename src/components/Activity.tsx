@@ -10,7 +10,7 @@ export type ActivityType = {
   mainSide: string;
   activityType: string;
   id: number;
-}
+};
 
 export type ActivityProps = ActivityType & {
   deleteActivity: (id: number) => void;
@@ -81,17 +81,19 @@ export const Activtiy: React.FC<ActivityProps> = ({
         </div>
       )}
       {confirmDelete && (
-        <div className="absolute bg-red-10 text-red-600 w-full h-full inset-0 text-center align-center content-center flex justify-center font-medium rounded-full">
-          <div className="leading-none inline-block h-auto self-center bg-red-100 py-3 px-8 rounded-lg shadow-md">
-            Are you sure?
+        <div className="absolute w-full h-full inset-0 text-center align-center content-center flex justify-center font-medium rounded-full">
+          <div
+            className={`bg-orange-600 text-white py-2 px-4 lg:px-6 font-semibold rounded-full leading-none shadow flex-auto flex items-center`}
+          >
+            <span className="w-4 h-4 inline">
+              <Trash />
+            </span>
+            <span className="flex-auto text-left ml-2">Are you sure?</span>
             <button
-              className="font-bold py-2 px-5 rounded-lg text-sm bg-red-200 inline-flex items-center uppercase ml-4 hover:bg-red-300"
+              className="hover:bg-orange-100 rounded-full hover:text-orange-600 items-center bg-orange-500 uppercase px-3 py-2 font-bold flex"
               onClick={deleteMe}
             >
-              <span className="icon inline w-4 h-4 mr-2">
-                <Trash />
-              </span>
-              <span>delete</span>
+              <span className="flex-0">Delete me</span>
             </button>
           </div>
         </div>

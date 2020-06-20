@@ -70,7 +70,7 @@ export const App: React.FC = () => {
     }
     setSnackbarStatus({
       open: true,
-      message: `Feed deleted from ${days[delFeedDate.getDay()]} @ ${delFeedDate.toLocaleTimeString()}`,
+      message: `Feed deleted from ${days[delFeedDate.getDay()]} @ ${delFeedDate.toLocaleTimeString().substr(0, 5)}`,
       messageType: "success",
     });
   };
