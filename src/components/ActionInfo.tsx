@@ -30,6 +30,19 @@ export const ActionInfo: React.FC<ActionInfoProps> = ({ newFeed, lastFeed }: Act
     }
   }, [lastFeed]);
 
+  useEffect(() => {
+    const onFocus = () => {
+      if (lastFeed !== null) {
+        setSinceLastFeed(timeSince(lastFeed.timestamp));
+        console.log("onFocus updating the timeSince");
+      }
+    };
+    window.addEventListener("focus", onFocus);
+    return () => {
+      window.removeEventListener("focus", onFocus);
+    };
+  });
+
   const lastFedString = (slf: DeconstructedTime | null) => {
     if (slf === null) {
       return <span className="text-5xl font-bold">Not sure..</span>;
