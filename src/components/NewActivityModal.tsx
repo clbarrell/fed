@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import Checkbox from "./form/Checkbox";
+import { destructMS } from "../lib/times";
 
 export type NewActivityModalProps = {
   newFeed: (timestamp: number, activityType: string, mainSide: string) => void;
@@ -25,6 +26,10 @@ export const NewActivityModal: React.FC<NewActivityModalProps> = ({ newFeed, can
   };
 
   const handleTimeInputChange = (e: any) => {
+    console.log("raw input", e.target.value);
+    console.log(new Date(e.target.value).toISOString());
+    console.log(new Date(e.target.value));
+    console.log("Current timeoffeed", timeOfFeed);
     setTimeOfFeed(new Date(e.target.value));
   };
 
@@ -37,14 +42,17 @@ export const NewActivityModal: React.FC<NewActivityModalProps> = ({ newFeed, can
     <div className="max-w-sm mx-auto text-indigo-800">
       <h1 className="font-bold text-4xl text-indigo-700 mb-6">New feed</h1>
       <div>
-        <p className="my-4">Started:</p>
+        <p className="my-4">
+          Started: <span>{JSON.stringify(destructMS(Date.now() - timeOfFeed.getTime()))}</span>
+        </p>
+        <p>ISO: {timeOfFeed.toISOString()}</p>
+        <p>Local: {timeOfFeed.toLocaleString()}</p>
         <div className="flex font-medium text-lg my-4">
           <input
             type="datetime-local"
             value={formatDateForInput(timeOfFeed)}
             onChange={handleTimeInputChange}
-            className="border-2 border-indigo-400 px-4 py-4 rounded-lg font-medium hover:bg-indigo-100 cursor-pointer w-full"
-            max={formatDateForInput(new Date())}
+            className="border-2 border-indigo-400 px-4 py-4 rounded-lg font-medium hover:bg-indigo-100 cursor-pointer w-full bg-transparent"
           />
         </div>
       </div>
