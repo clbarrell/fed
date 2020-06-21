@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Button from "./Button";
 import Checkbox from "./form/Checkbox";
 import { destructMS } from "../lib/times";
+import { format } from "date-fns";
 
-export type NewActivityModalProps = {
+export type NewActivityProps = {
   newFeed: (timestamp: number, activityType: string, mainSide: string) => void;
   cancel: () => void;
   defaultMainSide: string;
 };
-export const NewActivityModal: React.FC<NewActivityModalProps> = ({ newFeed, cancel, defaultMainSide }) => {
+export const NewActivity: React.FC<NewActivityProps> = ({ newFeed, cancel, defaultMainSide }) => {
   const [mainSide, setMainSide] = useState(defaultMainSide);
   const [timeOfFeed, setTimeOfFeed] = useState(new Date());
 
@@ -26,16 +27,12 @@ export const NewActivityModal: React.FC<NewActivityModalProps> = ({ newFeed, can
   };
 
   const handleTimeInputChange = (e: any) => {
-    console.log("raw input", e.target.value);
-    console.log(new Date(e.target.value).toISOString());
-    console.log(new Date(e.target.value));
-    console.log("Current timeoffeed", timeOfFeed);
     setTimeOfFeed(new Date(e.target.value));
   };
 
   const formatDateForInput = (date: Date) => {
-    const tzoffset = date.getTimezoneOffset() * 60000; //offset in milliseconds
-    return new Date(date.getTime() - tzoffset).toISOString().substr(0, 16);
+    const newDateFormat = format(date, "yyyy-MM-dd'T'HH:mm");
+    return newDateFormat;
   };
 
   return (
@@ -76,4 +73,4 @@ export const NewActivityModal: React.FC<NewActivityModalProps> = ({ newFeed, can
   );
 };
 
-export default NewActivityModal;
+export default NewActivity;

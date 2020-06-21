@@ -4,7 +4,7 @@ import ActionInfo from "./components/ActionInfo";
 import "./assets/main.css";
 import DailyFeed from "./components/DailyFeed";
 import data from "./testData.json";
-import NewActivityModal from "./components/NewActivityModal";
+import NewActivity from "./components/NewActivity";
 import { ActivityType, days } from "./components/Activity";
 import useLocalStorage from "./lib/useLocalStorage";
 import SnackbarToast from "./components/SnackbarToast";
@@ -124,7 +124,7 @@ export const App: React.FC = () => {
     if (event) {
       event.preventDefault();
     }
-    if (reason === "clickaway") {
+    if (reason === "clickaway" && snackbarStatus.messageType === "info") {
       return;
     }
     setSnackbarStatus({ ...snackbarStatus, open: false });
@@ -139,7 +139,7 @@ export const App: React.FC = () => {
           <DailyFeed feeds={activities} deleteActivity={deleteActivity} />
         </>
       ) : (
-        <NewActivityModal
+        <NewActivity
           newFeed={saveNewFeed}
           cancel={toggleNewActivity}
           defaultMainSide={lastFeed ? otherSide[lastFeed.mainSide] : "left"}
