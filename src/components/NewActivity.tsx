@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import Checkbox from "./form/Checkbox";
-import { destructMS } from "../lib/times";
-import { format } from "date-fns";
+import { format, formatDistanceToNow } from "date-fns";
 
 export type NewActivityProps = {
   newFeed: (timestamp: number, activityType: string, mainSide: string) => void;
@@ -40,10 +39,9 @@ export const NewActivity: React.FC<NewActivityProps> = ({ newFeed, cancel, defau
       <h1 className="font-bold text-4xl text-indigo-700 mb-6">New feed</h1>
       <div>
         <p className="my-4">
-          Started: <span>{JSON.stringify(destructMS(Date.now() - timeOfFeed.getTime()))}</span>
+          Started:{" "}
+          <span className="float-right text-indigo-400">{formatDistanceToNow(timeOfFeed, { addSuffix: true })}</span>
         </p>
-        <p>ISO: {timeOfFeed.toISOString()}</p>
-        <p>Local: {timeOfFeed.toLocaleString()}</p>
         <div className="flex font-medium text-lg my-4">
           <input
             type="datetime-local"
