@@ -34,7 +34,6 @@ export const ActionInfo: React.FC<ActionInfoProps> = ({ newFeed, lastFeed }: Act
     const onFocus = () => {
       if (lastFeed !== null) {
         setSinceLastFeed(timeSince(lastFeed.timestamp));
-        console.log("onFocus updating the timeSince");
       }
     };
     window.addEventListener("focus", onFocus);
