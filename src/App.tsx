@@ -30,7 +30,7 @@ export const App: React.FC = () => {
   };
 
   const onSWUpdate = () => {
-    setSnackbarStatus({ open: true, message: "Refresh the page to get updated version of app.", messageType: "info" });
+    setSnackbarStatus({ open: true, message: "A new version of Fed is available and will be used when all tabs for this page are closed..", messageType: "info" });
   };
 
   // If you want your app to work offline and load faster, you can change

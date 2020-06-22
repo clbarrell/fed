@@ -45,7 +45,7 @@ export const SnackbarToast: React.FC<SnackbarToastProps> = ({
     );
   };
 
-  const autoHide = messageType === "success" ? 3300 : 10000;
+  const autoHide = messageType === "success" ? 3500 : 10000;
 
   return (
     <Snackbar open={isOpen} onClose={handleClose} autoHideDuration={autoHide}>
