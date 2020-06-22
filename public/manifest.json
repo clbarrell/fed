@@ -4,19 +4,14 @@
   "description": "Helping mothers easily keep track of feeds and happenings with their new baby. It's the last thing you should have to remember!",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "100x100"
     },
     {
-      "src": "logo192.png",
+      "src": "iconx2.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "200x200"
     }
   ],
   "start_url": ".",
