@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/header";
 import ActionInfo from "./components/ActionInfo";
 import "./assets/main.css";
@@ -20,6 +20,7 @@ export const App: React.FC = () => {
     message: string;
     messageType: "success" | "info" | "";
   }>({ open: false, message: "", messageType: "" });
+  const [showAppUpdatedMessage, setShowAppUpdatedMessage] = useLocalStorage("appUpdated", false);
 
   const onSWSuccess = () => {
     setSnackbarStatus({
@@ -29,14 +30,37 @@ export const App: React.FC = () => {
     });
   };
 
-  const onSWUpdate = () => {
-    setSnackbarStatus({ open: true, message: "A new version of Fed is available and will be used when all tabs for this page are closed..", messageType: "info" });
+  /** called when a new version of service worker available */
+  const onSWUpdate = (registration: ServiceWorkerRegistration) => {
+    const waitingServiceWorker = registration.waiting;
+
+    if (waitingServiceWorker) {
+      waitingServiceWorker.onstatechange = () => {
+        if (waitingServiceWorker.state === "activated") {
+          setShowAppUpdatedMessage(true);
+          window.location.reload();
+        }
+      };
+      waitingServiceWorker.postMessage({ type: "SKIP_WAITING" });
+    }
   };
 
   // If you want your app to work offline and load faster, you can change
   // unregister() to register() below. Note this comes with some pitfalls.
   // Learn more about service workers: https://bit.ly/CRA-PWA
   serviceWorker.register({ onSuccess: onSWSuccess, onUpdate: onSWUpdate });
+
+  useEffect(() => {
+    if (showAppUpdatedMessage) {
+      setSnackbarStatus({
+        open: true,
+        message: "The app has been updated! 👍",
+        messageType: "info",
+      });
+      setShowAppUpdatedMessage(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const saveNewFeed = (timestamp: number, activityType: string, mainSide: string) => {
     const nf = {
