@@ -2,6 +2,8 @@ import React from "react";
 import Activity, { ActivityType } from "./Activity";
 import { ReactComponent as Blob } from "../assets/blob.svg";
 import styled from "styled-components";
+import { isSameDay } from "date-fns";
+import DailySummary from "./DailySummary";
 
 const SvgWrapper = styled.div`
   height: 400px;
@@ -16,6 +18,10 @@ export const DailyFeed: React.FC<DailyFeedProps> = ({ feeds, deleteActivity }: D
   const activityList: any[] = [];
 
   if (feeds.length > 1) {
+    // today
+    const d = new Date(feeds[0].timestamp);
+    activityList.push(<DailySummary activities={feeds.filter((f) => isSameDay(new Date(f.timestamp), d))} />);
+
     for (let i = 1; i < feeds.length; i++) {
       const msSince = feeds[i - 1].timestamp - feeds[i].timestamp;
       activityList.push(
@@ -29,6 +35,11 @@ export const DailyFeed: React.FC<DailyFeedProps> = ({ feeds, deleteActivity }: D
           deleteActivity={deleteActivity}
         />
       );
+      if (!isSameDay(new Date(feeds[i - 1].timestamp), new Date(feeds[i].timestamp))) {
+        // add summary
+        const d = new Date(feeds[i].timestamp);
+        activityList.push(<DailySummary activities={feeds.filter((f) => isSameDay(new Date(f.timestamp), d))} />);
+      }
     }
   }
 

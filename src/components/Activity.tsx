@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 // import styled from 'styled-components'
 import { destructMS } from "../lib/times";
 import { ReactComponent as Trash } from "../assets/trash.svg";
+import { format } from "date-fns";
 
 export const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -36,8 +37,6 @@ export const Activtiy: React.FC<ActivityProps> = ({
     return str;
   };
 
-  const timeString = `${days[time.getDay()]}  ${time.toLocaleTimeString().substr(0, 5)}`;
-
   const showDelete = () => {
     setConfirmDelete(true);
   };
@@ -58,9 +57,9 @@ export const Activtiy: React.FC<ActivityProps> = ({
   };
 
   return (
-    <div className="m-4 bg-indigo-100 text-indigo-900 rounded-full text-left px-6 py-4 flex justify-between items-center relative group">
-      <p className="font-medium  text-3xl">
-        {timeString}
+    <div className="m-4 bg-indigo-100 text-indigo-900 rounded-full text-left px-6 py-3 flex justify-between items-center relative group">
+      <p className="font-medium  text-2xl">
+        {format(time, "p")}
         {sinceLastFeed > 0 && sinceLastFeedDecon.d === 0 && (
           <span className="ml-2 text-sm text-indigo-400 font-normal">+ {sinceLastFeedString()}</span>
         )}

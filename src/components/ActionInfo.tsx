@@ -45,24 +45,30 @@ export const ActionInfo: React.FC<ActionInfoProps> = ({ newFeed, lastFeed }: Act
   const lastFedString = (slf: DeconstructedTime | null) => {
     if (slf === null) {
       return <span className="text-5xl font-bold">Not sure..</span>;
+    } else if (slf.d === 0 && slf.h === 0 && slf.m === 0) {
+      return (
+        <>
+          <span className="text-4xl">in the future</span>
+        </>
+      );
     } else if (slf.d === 0 && slf.h === 0) {
       return (
         <>
-          <span className="text-5xl font-bold">{slf.m}</span>
+          <span className="text-4xl">{slf.m}</span>
           <span className="text-4xl">m ago</span>
         </>
       );
     } else if (slf.d === 0) {
       return (
         <>
-          <span className="text-5xl font-bold">{slf.h}</span>
+          <span className="text-4xl">{slf.h}</span>
           <span className="text-4xl">h </span>
-          <span className="text-5xl font-bold">{slf.m}</span>
+          <span className="text-4xl">{slf.m}</span>
           <span className="text-4xl">m ago</span>
         </>
       );
     } else {
-      return <span className="text-5xl font-bold">Long ago</span>;
+      return <span className="text-4xl font-bold">Long ago</span>;
     }
   };
 
