@@ -1,10 +1,42 @@
-@tailwind base;
-
-@tailwind components;
-
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 input:checked ~ .toggle__dot {
   transform: translateX(100%);
   /* background-color: #48bb78; */
+}
+
+.react-timekeeper {
+  --main-font-family: theme(fontFamily.sans);
+  --main-box-shadow: none;
+  --top-colon-color: theme(colors.indigo.300);
+  --top-text-color: theme(colors.indigo.400);
+  --top-selected-color: theme(colors.pink.500);
+  --top-meridiem-color: theme(colors.indigo.400);
+  /* time dropdown */
+  /* --dropdown-border, 1px solid #f4f4f4)
+  --dropdown-shadow, 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))
+  --dropdown-text-color, #8c8c8c)
+  --dropdown-hover-bg, #EAF8FF) */
+
+  /* // clock wrapper */
+  --clock-wrapper-bg: theme(colors.indigo.100);
+
+  /* // clock hand */
+  --hand-line-color: theme(colors.indigo.300);
+  --hand-circle-center: theme(colors.indigo.300);
+  /* --hand-circle-outer, #e6f7ff); */
+  --hand-minute-circle: theme(colors.indigo.300);
+  /* // numbers */
+  --numbers-text-color: theme(colors.indigo.500);
+
+  /* // meridiem buttons */
+  --meridiem-text-color: theme(colors.indigo.500);
+  --meridiem-selected-bg-color: none;
+  --meridiem-selected-text-color: theme(colors.pink.500);
+}
+
+.react-timekeeper__clock-wrapper {
+  @apply rounded-lg;
 }

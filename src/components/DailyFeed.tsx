@@ -20,7 +20,12 @@ export const DailyFeed: React.FC<DailyFeedProps> = ({ feeds, deleteActivity }: D
   if (feeds.length > 1) {
     // today
     const d = new Date(feeds[0].timestamp);
-    activityList.push(<DailySummary activities={feeds.filter((f) => isSameDay(new Date(f.timestamp), d))} />);
+    activityList.push(
+      <DailySummary
+        key={`${feeds[0].timestamp}s`}
+        activities={feeds.filter((f) => isSameDay(new Date(f.timestamp), d))}
+      />
+    );
 
     for (let i = 1; i < feeds.length; i++) {
       const msSince = feeds[i - 1].timestamp - feeds[i].timestamp;
@@ -38,7 +43,7 @@ export const DailyFeed: React.FC<DailyFeedProps> = ({ feeds, deleteActivity }: D
       if (!isSameDay(new Date(feeds[i - 1].timestamp), new Date(feeds[i].timestamp))) {
         // add summary
         const d = new Date(feeds[i].timestamp);
-        activityList.push(<DailySummary activities={feeds.filter((f) => isSameDay(new Date(f.timestamp), d))} />);
+        activityList.push(<DailySummary key={`${feeds[i].timestamp}s`} activities={feeds.filter((f) => isSameDay(new Date(f.timestamp), d))} />);
       }
     }
   }
