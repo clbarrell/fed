@@ -70,7 +70,7 @@ export const NewActivity: React.FC<NewActivityProps> = ({ newFeed, cancel, defau
           Started:{" "}
           <span className="ml-3 text-indigo-400">...{formatDistanceToNow(timeOfFeed, { addSuffix: true })}</span>
         </p>
-        <div className="flex font-medium text-lg my-4">
+        <div className="flex font-medium text-lg my-4 justify-center md:justify-start">
           <select
             name="date select"
             id="dateSelect"
@@ -85,7 +85,7 @@ export const NewActivity: React.FC<NewActivityProps> = ({ newFeed, cancel, defau
             ))}
           </select>
         </div>
-        <div className="flex">
+        <div className="flex justify-center md:justify-start">
           <TimeKeeper
             time={time}
             onChange={(newTime) => setTime({ hour: newTime.hour, minute: newTime.minute })}
@@ -112,7 +112,7 @@ export const NewActivity: React.FC<NewActivityProps> = ({ newFeed, cancel, defau
           labelRight="Right"
         />
       </div>
-      <div className="flex justify-end mt-6 space-x-2">
+      <div className="flex justify-center md:justify-start mt-6 space-x-2">
         <Button onClick={cancel} secondary={true}>
           Cancel
         </Button>
