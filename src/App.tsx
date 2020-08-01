@@ -22,7 +22,7 @@ export const App: React.FC = () => {
   }>({ open: false, message: "", messageType: "" });
   const [showAppUpdatedMessage, setShowAppUpdatedMessage] = useLocalStorage("appUpdated", false);
 
-  const onSWSuccess = () => {
+  /* const onSWSuccess = () => {
     setSnackbarStatus({
       open: true,
       message: "This app is now available offline and can be installed.",
@@ -31,7 +31,7 @@ export const App: React.FC = () => {
   };
 
   /** called when a new version of service worker available */
-  const onSWUpdate = (registration: ServiceWorkerRegistration) => {
+  /* const onSWUpdate = (registration: ServiceWorkerRegistration) => {
     const waitingServiceWorker = registration.waiting;
 
     if (waitingServiceWorker) {
@@ -43,12 +43,13 @@ export const App: React.FC = () => {
       };
       waitingServiceWorker.postMessage({ type: "SKIP_WAITING" });
     }
-  };
+  }; */
 
   // If you want your app to work offline and load faster, you can change
   // unregister() to register() below. Note this comes with some pitfalls.
   // Learn more about service workers: https://bit.ly/CRA-PWA
-  serviceWorker.register({ onSuccess: onSWSuccess, onUpdate: onSWUpdate });
+  // serviceWorker.register({ onSuccess: onSWSuccess, onUpdate: onSWUpdate });
+  serviceWorker.unregister();
 
   useEffect(() => {
     if (showAppUpdatedMessage) {
